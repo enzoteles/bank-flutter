@@ -2,6 +2,7 @@ import 'package:bank_flutter/screens/contact_form.dart';
 import 'package:flutter/material.dart';
 
 class ListaDeContatos extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,11 +26,16 @@ class ListaDeContatos extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ContatosForm()));
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ContatosForm(),
+            ),
+          ).then((newContato) => debugPrint(newContato.toString()));
         },
         child: Icon(Icons.add),
       ),
     );
   }
 }
+

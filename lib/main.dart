@@ -1,8 +1,16 @@
+import 'package:bank_flutter/database/app_database.dart';
 import 'package:bank_flutter/screens/contacts_list.dart';
 import 'package:bank_flutter/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(ByteBank());
+import 'models/contact.dart';
+
+void main() {
+  runApp(ByteBank());
+  //save(Contato(0,"Teles", 1000));
+  //findAll().then((contatos) => debugPrint(contatos.toString()));
+
+}
 
 class ByteBank extends StatelessWidget {
   @override

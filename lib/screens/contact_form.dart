@@ -1,6 +1,16 @@
+import 'package:bank_flutter/models/contact.dart';
 import 'package:flutter/material.dart';
 
-class ContatosForm extends StatelessWidget {
+class ContatosForm extends StatefulWidget {
+
+  @override
+  _ContatosFormState createState() => _ContatosFormState();
+}
+
+class _ContatosFormState extends State<ContatosForm> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _accountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,12 +22,14 @@ class ContatosForm extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              controller: _nameController,
               decoration: InputDecoration(labelText: 'Full Name'),
               style: TextStyle(fontSize: 16),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: TextField(
+                controller: _accountController,
                 decoration: InputDecoration(labelText: 'Account Name'),
                 style: TextStyle(fontSize: 16),
                 keyboardType: TextInputType.number,
@@ -28,7 +40,13 @@ class ContatosForm extends StatelessWidget {
               child: SizedBox(
                 width: double.maxFinite,
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    String name = _nameController.text;
+                    int account = int.tryParse(_accountController.text);
+                    final Contato newContato = Contato(0,name, account);
+                    //voltar para tela que chamou
+                    Navigator.pop(context, newContato);
+                  },
                   child: Text('Create'),
                 ),
               ),
