@@ -5,12 +5,9 @@ import 'package:flutter/material.dart';
 
 import 'models/contact.dart';
 
-void main() {
-  runApp(ByteBank());
-  //save(Contato(0,"Teles", 1000));
-  //findAll().then((contatos) => debugPrint(contatos.toString()));
+void main() => runApp(ByteBank());
 
-}
+
 
 class ByteBank extends StatelessWidget {
   @override
