@@ -14,35 +14,37 @@ class ListaDeContatos extends StatelessWidget {
         initialData: List(),
         future: findAll(),
         builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-              break;
-            case ConnectionState.waiting:
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(),
-                    Text('loading...'),
-                  ],
-                ),
-              );
-              break;
-            case ConnectionState.active:
-              break;
-            case ConnectionState.done:
-              final List<Contato> contacts = snapshot.data;
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final Contato contact = contacts[index];
-                  return _ContactItem(contact);
-                },
-                itemCount: contacts.length,
-              );
-              break;
-          }
-          return Text('unknown error');
+            switch(snapshot.connectionState){
+
+              case ConnectionState.none:
+                break;
+              case ConnectionState.waiting:
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(),
+                      Text('loading...'),
+                    ],
+                  ),
+                );
+                break;
+              case ConnectionState.active:
+                break;
+              case ConnectionState.done:
+                final List<Contato> contacts = snapshot.data;
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    final Contato contact = contacts[index];
+                    return _ContactItem(contact);
+                  },
+                  itemCount: contacts.length,
+                );
+                break;
+            }
+            return Text('unknown error');
+
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -52,8 +54,7 @@ class ListaDeContatos extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => ContatosForm(),
                 ),
-              )
-              .then((newContato) => debugPrint(newContato.toString()));
+              );
         },
         child: Icon(Icons.add),
       ),

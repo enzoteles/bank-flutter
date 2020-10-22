@@ -1,3 +1,4 @@
+import 'package:bank_flutter/database/app_database.dart';
 import 'package:bank_flutter/models/contact.dart';
 import 'package:flutter/material.dart';
 
@@ -44,8 +45,7 @@ class _ContatosFormState extends State<ContatosForm> {
                     String name = _nameController.text;
                     int account = int.tryParse(_accountController.text);
                     final Contato newContato = Contato(0,name, account);
-                    //voltar para tela que chamou
-                    Navigator.pop(context, newContato);
+                    save(newContato).then((id) => Navigator.pop(context));
                   },
                   child: Text('Create'),
                 ),
