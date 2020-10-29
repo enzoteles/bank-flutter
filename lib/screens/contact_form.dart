@@ -1,4 +1,4 @@
-import 'package:bank_flutter/database/app_database.dart';
+import 'package:bank_flutter/database/dao/contact_dao.dart';
 import 'package:bank_flutter/models/contact.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +11,7 @@ class ContatosForm extends StatefulWidget {
 class _ContatosFormState extends State<ContatosForm> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _accountController = TextEditingController();
+  final ContactDao _dao = ContactDao();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class _ContatosFormState extends State<ContatosForm> {
                     String name = _nameController.text;
                     int account = int.tryParse(_accountController.text);
                     final Contato newContato = Contato(0,name, account);
-                    save(newContato).then((id) => Navigator.pop(context));
+                    _dao.save(newContato).then((id) => Navigator.pop(context));
                   },
                   child: Text('Create'),
                 ),

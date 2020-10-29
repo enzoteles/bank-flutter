@@ -1,9 +1,12 @@
-import 'package:bank_flutter/database/app_database.dart';
+import 'package:bank_flutter/database/dao/contact_dao.dart';
 import 'package:bank_flutter/models/contact.dart';
 import 'package:bank_flutter/screens/contact_form.dart';
 import 'package:flutter/material.dart';
 
 class ListaDeContatos extends StatelessWidget {
+
+  final ContactDao _dao = ContactDao();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +15,7 @@ class ListaDeContatos extends StatelessWidget {
       ),
       body: FutureBuilder<List<Contato>>(
         initialData: List(),
-        future: findAll(),
+        future: _dao.findAll(),
         builder: (context, snapshot) {
             switch(snapshot.connectionState){
 
