@@ -11,7 +11,7 @@ class ListaDeContatos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de Usuário'),
+        title: Text('Transfer'),
       ),
       body: FutureBuilder<List<Contato>>(
         initialData: List(),
